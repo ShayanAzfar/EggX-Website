@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EggX - 2026</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-wbg.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+        caret-color: transparent;
+    }
+
+    * input,
+    * textarea {
+        caret-color: auto;
+    }
+
+    :root {
+        --maincolor: #2d2dfe;
+        --seccolor: #f2a435;
+        --tercolor: #e11f25;
+        --rndmcolor: #01207b;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 90px;
+        background-color: var(--maincolor);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 0 40px;
+        position: relative;
+        z-index: 100;
+    }
+
+    .logo img {
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        display: block;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-grow: 1;
+    }
+
+    .navbar .pages {
+        margin-left: 40px;
+        margin-right: auto;
+    }
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 34px;
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+        transition: 0.3s ease;
+        position: relative;
+        display: inline-block;
+        padding: 5px 0;
+    }
+
+    .navbar ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: var(--seccolor);
+        transition: width 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+        color: var(--seccolor);
+    }
+
+    .navbar ul li a:hover::after {
+        width: 80%;
+    }
+
+    .navbar .btn button {
+        text-decoration: none;
+        padding: 15px 25px;
+        font-weight: 500;
+        font-size: 18px;
+        border-radius: 20px;
+        border: none;
+        background: var(--seccolor);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s ease;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px #000;
+    }
+
+    .navbar .btn button:hover {
+        box-shadow: 0px 0px 10px 0.5px var(--seccolor);
+    }
+
+    #menu-toggle,
+    .hamburger {
+        display: none;
+    }
+
+/* ==========================================================================
+   TABLET & MOBILE BREAKPOINT (Screens smaller than 799px Wide)
+   ========================================================================== */
+@media (max-width: 799px) {
+    nav {
+        position: fixed !important; 
+        top: 0;
+        left: 0;
+        width: 100%;               
+        height: 90px;
+        padding: 0 25px;
+        box-sizing: border-box;    
+        z-index: 1000;             
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1002;             
+        background-color: var(--seccolor);
+        padding: 10px;
+        box-sizing: content-box;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 🚀 RENDER FIX: Controls the internal hamburger lines and protects layers during smooth-scrolling */
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: white;
+        border-radius: 3px;
+        transition: all 0.3s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -300px; 
+        width: 280px;
+        height: 100vh;
+        background-color: var(--maincolor);
+        flex-direction: column;
+        align-items: center;       
+        justify-content: flex-start;
+        padding: 120px 20px 40px 20px;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s ease-in-out;
+        z-index: 1001;             
+    }
+
+    .navbar .pages {
+        margin-left: 0 !important;   
+        margin-right: 0 !important;  
+        margin-bottom: 40px;         
+        width: 100%;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;         
+        gap: 25px;
+        width: 100%;
+    }
+
+    .navbar ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar ul li a {
+        display: block;
+        width: 100%;
+        text-align: center;          
+        font-size: 22px;
+    }
+
+    .navbar .btn {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar .btn button {
+        width: 90%;
+        text-align: center;
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    #menu-toggle:checked ~ .navbar {
+        right: 0;
+    }
+
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* ==========================================================================
+   EXTRA SMALL MOBILE BREAKPOINT (Screens 550px and smaller)
+   ========================================================================== */
+@media (max-width: 550px) {
+    nav {
+        height: 75px !important;    
+        padding: 0 16px !important;
+    }
+
+    .logo img {
+        width: 55px;                 
+        height: 55px;
+    }
+
+    .hamburger {
+        width: 26px;                 
+        height: 18px;
+        padding: 8px;
+    }
+
+    /* 🚀 BALANCE FIX: Re-centers the cross perfectly for the smaller 18px box profile */
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(7.5px) rotate(45deg) !important;
+    }
+
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-7.5px) rotate(-45deg) !important;
+    }
+
+    .navbar {
+        width: 80%;           
+        right: -100%;          
+        padding: 110px 20px 40px 20px;
+    }
+
+    #menu-toggle:checked ~ .navbar {
+        right: 0;
+    }
+
+    .navbar .pages {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 30px;
+    }
+
+    .navbar ul {
+        gap: 22px;
+    }
+
+    .navbar ul li a {
+        font-size: 20px;
+    }
+
+    .navbar .btn button {
+        width: 100%;                 
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+        /* * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            caret-color: transparent;
+
+            input,
+            textarea {
+                caret-color: auto;
+            }
+        }
+
+        :root {
+            --maincolor: #2d2dfe;
+            --seccolor: #f2a435;
+            --tercolor: #e11f25;
+            --rndmcolor: #01207b;
+        }
+
+        .navbar {
+            display: flex;
+            /* justify-content:space-around; 
+            align-items: center;
+            height: 90px;
+            background-color: var(--maincolor);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        nav {
+            /* display: flex; 
+            justify-content: space-around;
+            align-items: center;
+            height: 90px;
+            background-color: var(--maincolor);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .logo img {
+            margin: 25px;
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 34px;
+        }
+
+        nav ul li a {
+            /* padding: ;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            transition: 0.3s ease;
+
+            position: relative;
+        }
+
+        nav ul li a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            transition: 0.3s ease;
+
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--seccolor);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--seccolor);
+        }
+
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+
+        nav .btn {
+            margin-left: auto;
+            padding-right: 25px;
+        }
+
+        nav .btn button {
+            text-decoration: none;
+            padding: 15px;
+            font-weight: 500;
+            font-size: 20px;
+            border-radius: 20px;
+            border: none;
+            background: var(--seccolor);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 5px #000;
+        }
+
+        nav .btn button:hover {
+            box-shadow: 0px 0px 10px 0.5px var(--seccolor);
+        } */
+
+        #page1 {
+            background-image: url(assets/images/mobilescreen2.png);
+            height: calc(100vh - 90px);
+            width: 100%;
+            background-size: cover;
+            background-position: top 25% right 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        #page1 .txt {
+            height: auto;
+            width: 600px;
+            padding: 0px 80px;
+        }
+
+        #page1 .txt h1 {
+            width: 600px;
+            color: var(--maincolor);
+            padding-bottom: 15px;
+        }
+
+        #page1 .txt p {
+            width: 600px;
+            padding-bottom: 15px;
+        }
+
+        #page1 .txt button {
+            text-decoration: none;
+            padding: 13px 25px;
+            font-weight: 500;
+            font-size: 20px;
+            border-radius: 14px;
+            border: none;
+            background: var(--seccolor);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 4px #000;
+        }
+
+        #page1 .txt button:hover {
+            box-shadow: 0px 0px 10px #000;
+        }
+
+        #page1 .txt .btns {
+            display: inline-block;
+        }
+
+
+        #page1 .txt .btns .play-store-badge img {
+            height: 80px;
+            transform: translateY(34px);
+            border-radius: 50px;
+        }
+
+        #page1 .txt .btns .apple-store-badge img {
+            height: 53.5px;
+            transform: translateY(22px);
+        }
+
+        @media (max-width: 799px) {
+            #page1 .txt {
+                width: 55%;
+                /* Only takes up the left half of the screen, leaving the right open */
+                padding: 0 30px;
+                /* Reduces the huge 80px padding so text has more breathing room */
+                height: auto;
+            }
+
+            #page1 .txt h1 {
+                padding-top: 105px;
+                padding-bottom: 5px;
+            }
+
+            #page1 .txt p {
+                display: none;
+            }
+            #page1 .txt .btns {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #page1 .txt .btns .play-store-badge img {
+                transform: translateY(4px);
+                border-radius: 50px;    
+            }
+
+            #page1 .txt .btns .apple-store-badge img {
+height: 53.5px;
+                transform: translateY(18px);
+            }
+
+        }
+        @media (max-width: 550px) {
+
+         #page1 {
+        background: #fff;
+        width: 100%;
+        overflow-x: hidden; /* Hard cut-off to protect the main screen layout */
+    }
+    
+    #page1 .txt {
+        width: 100% !important;      /* Forces container to match viewport width */
+        max-width: 100% !important;  /* Hard ceiling rule */
+        padding: 0 20px !important;  /* Safe inner spacing from screen edges */
+        box-sizing: border-box;      /* Keeps the padding inside the 100% calculation */
+        text-align: left !important; /* Forces layout to remain left-aligned */
+        margin: 0 !important;        /* Clears any center auto-margins */
+    }
+
+    #page1 .txt h1 {
+        font-size: 28px !important;  /* Shrinks huge font so it fits small displays */
+        line-height: 1.3;
+        text-align: left !important;
+        overflow-wrap: break-word;   /* Breaks long words naturally if needed */
+        width: 100%;
+    }
+
+    /* Fixes the button wrapper from pushing the right margin out */
+    #page1 .txt .btns {
+        display: flex;
+        flex-wrap: wrap;             /* CRITICAL: Wraps badges to next line if screen gets too narrow */
+        justify-content: flex-start; /* Aligns both badges to the left */
+        gap: 10px;                   /* Clean horizontal/vertical gap between badges */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Keeps the badges scaled down and shifts removed */
+    #page1 .txt .btns .play-store-badge img,
+    #page1 .txt .btns .apple-store-badge img {
+        max-width: 135px;            /* Ensures badges aren't wide enough to break the screen */
+        width: 100%;
+        /* height: auto !important;      */
+        /* transform: none !important;  */
+    }
+    #page1 .txt .btns .play-store-badge img {
+         height: 68px;
+        transform: translateY(10px)
+    }
+}
+
+        .scrl {
+            display: flex;
+            width: 100%;
+            /* line-height: 50px; */
+            background-color: var(--tercolor);
+            white-space: nowrap;
+            overflow-x: auto;
+            box-sizing: border-box;
+            padding: 12px 0;
+        }
+
+        .scrl::-webkit-scrollbar {
+            display: none;
+        }
+
+        .group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 10s infinite linear;
+        }
+
+        .tt {
+            flex: 0 0 5em;
+            color: #fff;
+            font-size: 25px;
+            padding: 0px 54px;
+        }
+
+        @keyframes spin {
+            from {
+                translate: 0;
+            }
+
+            to {
+                translate: -100%;
+            }
+        }
+
+        /* section {
+            background-color: var(--maincolor);
+        }
+
+        .page2 {
+            background-color: var(--maincolor);
+            height: 100vh;
+            color: #fff;
+        }
+        .about-us {
+            justify-content: center;
+        } */
+        .page2 {
+            width: 100%;
+            /* display: flex; */
+            justify-items: center;
+            /* Centers the inner content block horizontally */
+            padding: 35px 0;
+            /* Adds breathing room to the top and bottom of the section */
+            background-color: var(--maincolor);
+            /* Keeps your blue section background seamless */
+        }
+
+        .page2 h1 {
+            text-align: center;
+            width: 80vw;
+            color: #fff;
+            padding: 50px 0px;
+            justify-content: center;
+
+
+        }
+
+        /* Style and position the content text wrapper */
+        .about-us {
+            /* transform: translateY(-5px); */
+            padding: 40px;
+            background-color: var(--rndmcolor);
+            width: 80%;
+            /* Restricts width to exactly 80% as requested */
+            max-width: 1200px;
+            /* Prevents the text from stretching too wide on massive screens */
+            color: white;
+            /* Ensures high visibility against the blue background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px 6px #000;
+        }
+
+        .about-us h1 {
+            text-align: center;
+            margin: 30px 0 15px 0;
+        }
+
+        /* Justify the descriptive paragraphs */
+        .about-us p {
+            text-align: justify;
+            /* Spreads text evenly from left to right margins */
+            line-height: 1.6;
+            /* Adds line spacing for comfortable reading */
+            margin-bottom: 20px;
+            /* Spaces out each paragraph nicely */
+            font-size: 18px;
+        }
+
+        /* Style the headings within the section */
+        .about-us h2 {
+            text-align: center;
+            margin: 30px 0 15px 0;
+            /* Adds solid separation above the Key Features heading */
+            /* font-size: 28px; */
+        }
+
+        /* #faqss {
+        background-color: #fff; */
+
+        .faqs {
+            max-width: 80vw;
+            margin: auto;
+        }
+
+        .faqs>h1 {
+            text-align: center;
+            width: 80vw;
+            color: #fff;
+            padding: 50px 0px;
+        }
+
+
+        .accordion {
+            background-color: var(--rndmcolor);
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            padding: 2rem 2.5rem;
+            border: none;
+            outline: none;
+            transition: 0.5s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+
+        }
+
+        .accordion i {
+            font-size: 1rem;
+            transform: rotate(45deg);
+        }
+
+        .active,
+        .accordion:hover {
+            background-color: #001553;
+        }
+
+        .panel {
+            padding: 0 2rem 2.5rem 2rem;
+            background-color: var(--rndmcolor);
+            background-color: #001553;
+            overflow: hidden;
+            display: none;
+        }
+
+        .panel p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .faq {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            margin: 10px 0;
+        }
+
+        .faq.active {
+            border: none;
+        }
+
+        #contact-us {
+            min-height: 100vh;
+            width: 100%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 80%;
+            background: #fff;
+            border-radius: 6px;
+            padding: 30px 60px 40px 40px;
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .container .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .container .content .left-side {
+            width: 26%;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .container .content .left-side::before {
+            content: '';
+            position: absolute;
+            height: 70%;
+            width: 2px;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #afafb6;
+        }
+
+        .content .left-side .details {
+            margin: 14px;
+            text-align: center;
+        }
+
+        .content .left-side .details i {
+            font-size: 30px;
+            color: var(--maincolor);
+            margin-bottom: 10px;
+        }
+
+        .content .left-side .details .topic {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .content .left-side .details .text-one,
+        .content .left-side .details .text-two {
+            font-size: 14px;
+            color: #afafb6;
+        }
+
+        .container .content .right-side {
+            width: 75%;
+            margin-left: 75px;
+        }
+
+        .content .right-side .topic-text {
+            font-size: 23px;
+            font-weight: 600;
+            color: var(--maincolor);
+        }
+
+        .right-side .input-box {
+            height: 50px;
+            width: 100%;
+            margin: 12px 0;
+        }
+
+        .right-side .input-box input,
+        .right-side .input-box textarea {
+            height: 100%;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            background: #F0F1F8;
+            font-size: 16px;
+            padding: 0 15px;
+            resize: none;
+        }
+
+        .right-side .message-box {
+            min-height: 110px;
+        }
+
+        .right-side .button {
+            display: inline-block;
+            margin-top: 6px;
+
+        }
+
+        .right-side .button input[type="submit"] {
+            border: none;
+            box-shadow: 0px 0px 5px #000;
+            color: #fff;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: var(--maincolor);
+            cursor: pointer;
+            transition: all 0.5 ease;
+        }
+
+        .button input[type="submit"]:hover {
+
+            background: var(--rndmcolor);
+        }
+
+        .ftr {
+            background-color: var(--maincolor);
+            /* justify-content: center; */
+        }
+
+        footer {
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px 80px;
+        }
+
+        footer .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        footer .col-right {
+            margin-top: 128px;
+        }
+
+        footer .install {
+            margin-top: 128px;
+        }
+
+        footer .lg {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 100px;
+            height: 100px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 0 0 8px 0;
+        }
+
+        footer a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        footer .follow {
+            margin-top: 20px;
+        }
+
+        footer .follow i {
+            color: #fff;
+            padding-right: 4px;
+            cursor: pointer;
+        }
+
+        footer .install .row .img1 {
+            height: 100px;
+            width: 100px;
+
+        }
+
+        footer .install .row .img2 {
+            height: 50px;
+            width: 110px;
+            transform: translateY(-25px);
+        }
+
+        /* Media Query for contct form  */
+        @media (max-width: 950px) {
+            .container {
+                width: 90%;
+                padding: 30px 35px 40px 35px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .container {
+                margin: 40px 0;
+                height: 100%;
+            }
+
+            .container .content {
+                flex-direction: column-reverse;
+            }
+
+            .container .content .left-side {
+                width: 100%;
+                flex-direction: row;
+                margin-top: 40px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .container .content .left-side::before {
+                display: none;
+            }
+
+            .container .content .right-side {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        /* old Media Query for NavBar */
+        /* @media (max-width: 801px) {
+            nav {
+                width: 100%;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -310px;
+                height: 100vh;
+                width: 300px;
+                background-color: var(--maincolor);
+                box-shadow: 80px 0 0 10px;
+                padding: 80px 0 0 10px;
+                z-index: 1;
+            }
+
+            .navbar .pages {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .navbar ul {
+                padding-left: 10px;
+                display: flex;
+                flex-direction: column;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            .navbar li {
+                margin-bottom: 25px
+            }
+
+            nav ul li a {
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 10px 0;
+                font-size: 20px;
+            }
+
+            .logo img {
+                padding-left: 10px;
+                margin: 25px;
+                width: 70px;
+                height: 70px;
+                cursor: pointer;
+                transform: translate(-800px, -100px);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo-wbg.webp" alt="EggsTrader Logo">
+                </a>
+            </div>
+
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <div class="navbar">
+                <div class="pages">
+                    <ul>
+                        <li><a href="#abt-us">About us</a></li>
+                        <li><a target="_blank" href="https://asn.com.pk/news-and-media/">News</a></li>
+                        <li><a href="#faqss">FAQs</a></li>
+                        <li><a href="#contact-us">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="btn">
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.asncopk.eggx">
+                        <button>Download Mobile App</button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo-wbg.webp" alt="">
+                    </a>
+                </div>
+                <div class="pages">
+                    <ul>
+                        <li><a href="#abt-us">About us</a></li>
+                        <li><a target="_blank" href="https://asn.com.pk/news-and-media/">News</a></li>
+                        <li><a href="#faqss">FAQs</a></li>
+                        <li><a href="#contact-us">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="btn">
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.asncopk.eggx">
+                        <button>Download Mobile App</button>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+    </header> -->
+
+    <main>
+        <div id="page1">
+            <div class="txt">
+                <h1>
+                    The easiest way to buy and sell eggs. Anywhere in the world.
+                </h1>
+                <p>
+                    EggX is a digital marketplace for fresh eggs that connects poultry farmers across the country with a
+                    vast network of fresh egg consumers in their areas, where they can sell their farm eggs at the best
+                    prices they want.
+                </p>
+                <div class="btns">
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="apple-store-badge">
+                        <img alt="Download on the App Store"
+                            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" />
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.asncopk.eggx" target="_blank"
+                        class="play-store-badge">
+                        <img alt="Get it on Google Play" src="assets/images/googleplay.png" />
+                        <!-- https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png -->
+                    </a>
+                </div>
+            </div>
+            <div class="screen">
+                <!-- <img src="assets/images/ss.webp" alt="" class="ss">
+                <img src="assets/images/mscreen.webp" alt="" class="mobilescreen"> -->
+            </div>
+        </div>
+    </main>
+    <div class="scrl">
+        <div class="group">
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Real-time Bids and Auctions
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Transparent Pricing
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Verified Genuine Buyers
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Efficient Transaction Management
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Easy Interface
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Various payment methods including cash on delivery.
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Safe and reliable platform
+            </div>
+        </div>
+        <div aria-hidden class="group">
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Real-time Bids and Auctions
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Transparent Pricing
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Verified Genuine Buyers
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Efficient Transaction Management
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Easy Interface
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Various payment methods including cash on delivery.
+            </div>
+            <div class="tt">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"
+                    id="Check-2--Streamline-Block-Free" height="16" width="16">
+                    <desc>
+                        Check 2 Streamline Icon: https://streamlinehq.com
+                    </desc>
+                    <path fill="#ffffff" fill-rule="evenodd"
+                        d="M8 16c4.4183 0 8 -3.5817 8 -8 0 -4.41828 -3.5817 -8 -8 -8 -4.41828 0 -8 3.58172 -8 8 0 4.4183 3.58172 8 8 8Zm4.4999 -9.49992 -2 -2.00005 -3.50004 3.4999 -1.49988 -1.49979L3.49992 8.5002 6.99986 12l5.50004 -5.49992Z"
+                        clip-rule="evenodd" stroke-width="1"></path>
+                </svg>
+                Safe and reliable platform
+            </div>
+        </div>
+    </div>
+    <section id="abt-us" class="page2">
+        <h1>About Us</h1>
+        <div class="about-us">
+            <p>EggX is a digital marketplace for fresh eggs that connects poultry farmers across the country with a vast
+                network of fresh egg consumers in their areas, where they can sell their farm eggs at the best prices
+                they want. </p>
+            <h2>Key Features:</h2>
+            <p>1: <b>Real-time Bids and Auctions</b>: The app promotes market transparency and accurate price trends
+                through real-time auction bids on offers to protect farmers and egg consumers from future losses. </p>
+            <p>2: <b>Transparent Pricing</b>: Monitor market trends and price changes to ensure fair and competitive
+                transactions.</p>
+            <p>3: <b>Verified Genuine Buyers:</b>:Opportunity to connect directly with verified consumers, eliminating
+                the hassle of marketing.</p>
+            <p>4: <b>Efficient Transaction Management</b>: The app offers an automated logistics system so that farmers
+                and buyers can continue their business activities without getting bogged down in transportation issues.
+            </p>
+            <p>5: <b>Easy Interface</b>: This app is designed for simplicity and speed, making trading easy for
+                everyone.</p>
+            <p>6: <b>Various payment methods including cash on delivery.</b></p>
+            <p>7: <b>Safe and reliable platform</b>: Designed to ensure a safe environment and smooth, reliable
+                transactions.</p>
+        </div>
+    </section>
+    <!-- <section class="page2">
+        <div class="news"></div>
+    </section> -->
+    <section id="faqss" class="page2">
+        <div class="faqs">
+            <h1>Frequently Asked Questions</h1>
+            <div class="faq">
+                <button class="accordion">
+                    How does EggX work?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="panel">
+                    <p>
+                        Poultry farms offer their egg production for auction on this mobile application. On which
+                        pre-verified genuine buyers place bids based on their desired quantity.
+
+
+
+                        Through the continuous bids submitted during the auction, the egg sellers get an idea of ​​the
+                        market supply and demand and get the opportunity to make their decision based on this real price
+                        fluctuation. Usually, the seller chooses the highest bid during the two-hour period given for
+                        trading and closes the deal. If the seller does not accept any bids before the end of the
+                        auction time, the lot offered for auction is automatically removed from the trading window.
+
+
+
+                        Once the bid is accepted, the platform completes the transaction by confirming the agreed price,
+                        quantity, and delivery terms and notifies both parties of the deal confirmation. The buyer must
+                        immediately pay the price of the lot offered for auction to finalize the order. The method of
+                        payment for prices is separately specified in the application. Buyers who have chosen Cash on
+                        Delivery (COD) are exempt from advance payment and will pay in cash upon receipt of the goods.
+
+
+
+                        After the deal is completed, the platform consolidates multiple orders in the same area or route
+                        to ensure efficient transportation. In other words, small orders are sent with other orders in
+                        the area instead of being sent individually. The transporter waits for other orders until all
+                        the goods are equal to the load of a commercially viable vehicle, which reduces logistics costs
+                        and improves efficiency. After meeting this threshold, the platform sends a delivery order to
+                        the registered transporter, which contains details such as pickup and delivery locations,
+                        quantity, and quality.
+
+
+
+                        The seller has to prepare the goods and finalize the shipping arrangements within an hour of
+                        order confirmation, otherwise failure to meet this deadline will result in a penalty of Rs.
+                        10,000 per shipment, which will be automatically deducted from the seller’s credit limit or
+                        collected from other sources.
+
+
+
+                        On the other hand, the transporter also has to pick up and deliver the goods within a strict
+                        time frame. All deliveries must be delivered within 5 hours of picking up the goods, otherwise
+                        the transporter will have to pay a penalty of Rs. 5,000 or more. The goods will be delivered to
+                        a pre-selected collection point, where the buyer or their representative will receive it.
+
+
+
+                        Throughout this entire transaction and logistics process, the platform keeps a digital record of
+                        all bids, transactions, payments, and logistics activities to maintain complete transparency.
+
+
+
+                        This application is designed to simplify and improve the trade of perishable goods, speed up
+                        delivery, ensure fair prices and freshness of products, as well as ensure market access for both
+                        buyers and sellers.
+                    </p>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="accordion">
+                    How to install EggX?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="panel">
+                    <p>
+                        You can easily download and install this application from the Google Play Store or Apple Store.
+                        In case of failure, contact us.
+                    </p>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="accordion">
+                    What is the Registration Method?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="panel">
+                    <p>
+                        Enter the information asked. Enter your name, mobile number, email (if any), business address,
+                        city name. Choose a username and password. Read and understand the terms of use of the app and
+                        click on the agreement. After entering all the required information, press the submit button.
+
+                        The application will send a code (OTP) to your mobile, enter this code. Congratulations, you are
+                        registered. In case of failure, contact us.
+                    </p>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="accordion">
+                    How to login?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="panel">
+                    <p>
+                        You can log in to this app with your username and password.
+
+                        In case of first-time use, you will have to register yourself on this app before logging in.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact-us">
+        <div class="container">
+            <div class="content">
+                <div class="left-side">
+                    <div class="address details">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="topic">Address</div>
+                        <div class="text-one">Suite# 405, Wind Song Place</div>
+                        <div class="text-two">K. C. H. S. Union Block-7/8, Shahrah-e-Faisal, Karachi</div>
+                    </div>
+                    <div class="phone details">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="topic">Phone</div>
+                        <div class="text-one">+92-21-34531510-11</div>
+                        <div class="text-two">+92-21-34305633</div>
+                    </div>
+                    <div class="email details">
+                        <i class="fas fa-envelope"></i>
+                        <div class="topic">Email</div>
+                        <div class="text-one">info@asn.com.pk</div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="topic-text">Send Us Message</div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni itaque ratione ab voluptatem
+                        autem id iste nulla! Autem, voluptate eligendi?</p>
+                    <form action="https://formsubmit.co/azfarkhi@gmail.com" method="POST">
+                        <div class="input-box">
+                            <input type="text" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="msg" placeholder="Enter your message here"></textarea>
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Send Now">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="ftr">
+        <div class="col">
+            <a href="index.html"><img class="lg" src="assets/images/logo-wbg.webp" alt=""></a>
+
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Suite# 405, Wind Song Place
+                K. C. H. S. Union Block-7/8, Shahrah-e-Faisal, Karachi</p>
+            <p><strong>Phone:</strong> +92-21-34531510-11 ,
+                +92-21-34305633</p>
+            <div class="follow">
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-right">
+            <h4>Quick links</h4>
+            <a href="#abt-us">About us</a>
+            <a href="https://asn.com.pk/news-and-media/">News</a>
+            <a href="#faqss">FAQs</a>
+            <a href="#contact-us">Contact us</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App store or Googe play</p>
+            <div class="row">
+                <a target="_blank" href="https://www.apple.com/app-store/">
+                    <img class="img1"
+                        src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                        alt="">
+                </a>
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.asncopk.eggx">
+                    <img class="img2" src="assets/images/googleplay.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026, ASN Healthcare – International Standards. Uncompromised Animal Health.</p>
+        </div>
+    </footer>
+    <script>
+        var acc = document.getElementsByClassName
+            ("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function
+                () {
+                this.classList.toggle("active");
+                this.parentElement.classList.toggle("active");
+
+                var panel = this.nextElementSibling;
+
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
