@@ -423,7 +423,7 @@
 
         #page1 {
             background-image: url(assets/images/mobilescreen2.png);
-            height: calc(100vh - 90px);
+            height: calc(100vh - 90px - 60px);
             width: 100%;
             background-size: cover;
             background-position: top 25% right 0;
@@ -597,8 +597,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: spin 21s infinite linear;
-            /* 10s to 21s */
+            animation: spin 27s infinite linear;
+            /* 10s to 27s */
         }
 
         .tt {
@@ -637,13 +637,13 @@
             /* Centers the inner content block horizontally */
             padding: 35px 0;
             /* Adds breathing room to the top and bottom of the section */
-            background-color: var(--maincolor);
+            background-color: #fff;
         }
 
         .page2 h1 {
             text-align: center;
             width: 80vw;
-            color: #fff;
+            color: var(--maincolor);
             padding: 50px 0px;
             justify-content: center;
 
@@ -654,10 +654,10 @@
         .about-us {
             /* transform: translateY(-5px); */
             padding: 40px;
-            background-color: var(--rndmcolor);
+            background-color: #f0f1f8;
             width: 80%;
             max-width: 1200px;
-            color: white;
+            color: #6d6d6d;
             border-radius: 10px;
             /* box-shadow: 0 0 15px 6px #000; */
         }
@@ -694,14 +694,14 @@
         .faqs>h1 {
             text-align: center;
             width: 80vw;
-            color: #fff;
+            color: var(--maincolor);
             padding: 50px 0px;
         }
 
 
         .accordion {
-            background-color: var(--rndmcolor);
-            color: #fff;
+            background-color: #f0f1f8;
+            color: #6d6d6d;
             cursor: pointer;
             font-size: 18px;
             width: 100%;
@@ -723,19 +723,19 @@
 
         .active,
         .accordion:hover {
-            background-color: #001553;
+            background-color: #ececec;
         }
 
         .panel {
             padding: 0 2rem 2.5rem 2rem;
             background-color: var(--rndmcolor);
-            background-color: #001553;
+            background-color: #ececec;
             overflow: hidden;
             display: none;
         }
 
         .panel p {
-            color: rgba(255, 255, 255, 0.5);
+            color: #6d6d6d;
             font-size: 1.2rem;
             line-height: 1.4;
         }
@@ -763,7 +763,7 @@
             background: #fff;
             border-radius: 6px;
             padding: 30px 60px 40px 40px;
-            /* box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2); */
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
         }
 
         .container .content {
