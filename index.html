@@ -12,296 +12,296 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Poppins', sans-serif;
-        box-sizing: border-box;
-        caret-color: transparent;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            caret-color: transparent;
+        }
 
-    * input,
-    * textarea {
-        caret-color: auto;
-    }
+        * input,
+        * textarea {
+            caret-color: auto;
+        }
 
-    :root {
-        --maincolor: #2d2dfe;
-        --seccolor: #f2a435;
-        --tercolor: #e11f25;
-        --rndmcolor: #01207b;
-    }
+        :root {
+            --maincolor: #2d2dfe;
+            --seccolor: #f2a435;
+            --tercolor: #e11f25;
+            --rndmcolor: #01207b;
+        }
 
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 90px;
-        background-color: var(--maincolor);
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        padding: 0 40px;
-        position: relative;
-        z-index: 100;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            background-color: var(--maincolor);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 100;
+        }
 
-    .logo img {
-        width: 70px;
-        height: 70px;
-        cursor: pointer;
-        display: block;
-    }
+        .logo img {
+            width: 70px;
+            height: 70px;
+            cursor: pointer;
+            display: block;
+        }
 
-    .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        flex-grow: 1;
-    }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-grow: 1;
+        }
 
-    .navbar .pages {
-        margin-left: 40px;
-        margin-right: auto;
-    }
+        .navbar .pages {
+            margin-left: 40px;
+            margin-right: auto;
+        }
 
-    .navbar ul {
-        display: flex;
-        list-style: none;
-        align-items: center;
-        gap: 34px;
-    }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 34px;
+        }
 
-    .navbar ul li a {
-        text-decoration: none;
-        color: white;
-        font-size: 20px;
-        font-weight: 500;
-        transition: 0.3s ease;
-        position: relative;
-        display: inline-block;
-        padding: 5px 0;
-    }
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            position: relative;
+            display: inline-block;
+            padding: 5px 0;
+        }
 
-    .navbar ul li a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 2px;
-        background-color: var(--seccolor);
-        transition: width 0.3s ease;
-    }
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--seccolor);
+            transition: width 0.3s ease;
+        }
 
-    .navbar ul li a:hover {
-        color: var(--seccolor);
-    }
+        .navbar ul li a:hover {
+            color: var(--seccolor);
+        }
 
-    .navbar ul li a:hover::after {
-        width: 80%;
-    }
+        .navbar ul li a:hover::after {
+            width: 80%;
+        }
 
-    .navbar .btn button {
-        text-decoration: none;
-        padding: 15px 25px;
-        font-weight: 500;
-        font-size: 18px;
-        border-radius: 20px;
-        border: none;
-        background: var(--seccolor);
-        color: #fff;
-        cursor: pointer;
-        transition: 0.3s ease;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        box-shadow: 0px 0px 5px #000;
-    }
+        .navbar .btn button {
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            font-size: 18px;
+            border-radius: 20px;
+            border: none;
+            background: var(--seccolor);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease;
+            /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+            /* box-shadow: 0px 0px 5px #000; */
+        }
 
-    .navbar .btn button:hover {
-        box-shadow: 0px 0px 10px 0.5px var(--seccolor);
-    }
+        .navbar .btn button:hover {
+            /* box-shadow: 0px 0px 10px 0.5px var(--seccolor); */
+        }
 
-    #menu-toggle,
-    .hamburger {
-        display: none;
-    }
+        #menu-toggle,
+        .hamburger {
+            display: none;
+        }
 
-/* ==========================================================================
+        /* ==========================================================================
    TABLET & MOBILE BREAKPOINT (Screens smaller than 799px Wide)
    ========================================================================== */
-@media (max-width: 799px) {
-    nav {
-        position: fixed !important; 
-        top: 0;
-        left: 0;
-        width: 100%;               
-        height: 90px;
-        padding: 0 25px;
-        box-sizing: border-box;    
-        z-index: 1000;             
-    }
+        @media (max-width: 799px) {
+            nav {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 90px;
+                padding: 0 25px;
+                box-sizing: border-box;
+                z-index: 1000;
+            }
 
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 21px;
-        cursor: pointer;
-        z-index: 1002;             
-        background-color: var(--seccolor);
-        padding: 10px;
-        box-sizing: content-box;
-        border-radius: 10px;
-        box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.15);
-    }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+                cursor: pointer;
+                z-index: 1002;
+                background-color: var(--seccolor);
+                padding: 10px;
+                box-sizing: content-box;
+                border-radius: 10px;
+                /* box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.15); */
+            }
 
-    /* 🚀 RENDER FIX: Controls the internal hamburger lines and protects layers during smooth-scrolling */
-    .hamburger span {
-        display: block;
-        height: 3px;
-        width: 100%;
-        background-color: white;
-        border-radius: 3px;
-        transition: all 0.3s cubic-bezier(0.1, 0.82, 0.76, 0.965);
-        will-change: transform;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-    }
+            /* 🚀 RENDER FIX: Controls the internal hamburger lines and protects layers during smooth-scrolling */
+            .hamburger span {
+                display: block;
+                height: 3px;
+                width: 100%;
+                background-color: white;
+                border-radius: 3px;
+                transition: all 0.3s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+                will-change: transform;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
 
-    .navbar {
-        position: fixed;
-        top: 0;
-        right: -300px; 
-        width: 280px;
-        height: 100vh;
-        background-color: var(--maincolor);
-        flex-direction: column;
-        align-items: center;       
-        justify-content: flex-start;
-        padding: 120px 20px 40px 20px;
-        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-        transition: right 0.4s ease-in-out;
-        z-index: 1001;             
-    }
+            .navbar {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--maincolor);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 120px 20px 40px 20px;
+                /* box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3); */
+                transition: right 0.4s ease-in-out;
+                z-index: 1001;
+            }
 
-    .navbar .pages {
-        margin-left: 0 !important;   
-        margin-right: 0 !important;  
-        margin-bottom: 40px;         
-        width: 100%;
-    }
+            .navbar .pages {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                margin-bottom: 40px;
+                width: 100%;
+            }
 
-    .navbar ul {
-        flex-direction: column;
-        align-items: center;         
-        gap: 25px;
-        width: 100%;
-    }
+            .navbar ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+                width: 100%;
+            }
 
-    .navbar ul li {
-        width: 100%;
-        text-align: center;
-    }
+            .navbar ul li {
+                width: 100%;
+                text-align: center;
+            }
 
-    .navbar ul li a {
-        display: block;
-        width: 100%;
-        text-align: center;          
-        font-size: 22px;
-    }
+            .navbar ul li a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 22px;
+            }
 
-    .navbar .btn {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-    }
+            .navbar .btn {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+            }
 
-    .navbar .btn button {
-        width: 90%;
-        text-align: center;
-        font-size: 18px;
-        padding: 15px;
-    }
+            .navbar .btn button {
+                width: 90%;
+                text-align: center;
+                font-size: 18px;
+                padding: 15px;
+            }
 
-    #menu-toggle:checked ~ .navbar {
-        right: 0;
-    }
+            #menu-toggle:checked~.navbar {
+                right: 0;
+            }
 
-    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
+            #menu-toggle:checked~.hamburger span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
 
-    #menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
+            #menu-toggle:checked~.hamburger span:nth-child(2) {
+                opacity: 0;
+            }
 
-    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-}
+            #menu-toggle:checked~.hamburger span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
 
-/* ==========================================================================
+        /* ==========================================================================
    EXTRA SMALL MOBILE BREAKPOINT (Screens 550px and smaller)
    ========================================================================== */
-@media (max-width: 550px) {
-    nav {
-        height: 75px !important;    
-        padding: 0 16px !important;
-    }
+        @media (max-width: 550px) {
+            nav {
+                height: 75px !important;
+                padding: 0 16px !important;
+            }
 
-    .logo img {
-        width: 55px;                 
-        height: 55px;
-    }
+            .logo img {
+                width: 55px;
+                height: 55px;
+            }
 
-    .hamburger {
-        width: 26px;                 
-        height: 18px;
-        padding: 8px;
-    }
+            .hamburger {
+                width: 26px;
+                height: 18px;
+                padding: 8px;
+            }
 
-    /* 🚀 BALANCE FIX: Re-centers the cross perfectly for the smaller 18px box profile */
-    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: translateY(7.5px) rotate(45deg) !important;
-    }
+            /* 🚀 BALANCE FIX: Re-centers the cross perfectly for the smaller 18px box profile */
+            #menu-toggle:checked~.hamburger span:nth-child(1) {
+                transform: translateY(7.5px) rotate(45deg) !important;
+            }
 
-    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: translateY(-7.5px) rotate(-45deg) !important;
-    }
+            #menu-toggle:checked~.hamburger span:nth-child(3) {
+                transform: translateY(-7.5px) rotate(-45deg) !important;
+            }
 
-    .navbar {
-        width: 80%;           
-        right: -100%;          
-        padding: 110px 20px 40px 20px;
-    }
+            .navbar {
+                width: 80%;
+                right: -100%;
+                padding: 110px 20px 40px 20px;
+            }
 
-    #menu-toggle:checked ~ .navbar {
-        right: 0;
-    }
+            #menu-toggle:checked~.navbar {
+                right: 0;
+            }
 
-    .navbar .pages {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 30px;
-    }
+            .navbar .pages {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                margin-bottom: 30px;
+            }
 
-    .navbar ul {
-        gap: 22px;
-    }
+            .navbar ul {
+                gap: 22px;
+            }
 
-    .navbar ul li a {
-        font-size: 20px;
-    }
+            .navbar ul li a {
+                font-size: 20px;
+            }
 
-    .navbar .btn button {
-        width: 100%;                 
-        padding: 14px;
-        font-size: 16px;
-    }
-}
+            .navbar .btn button {
+                width: 100%;
+                padding: 14px;
+                font-size: 16px;
+            }
+        }
 
         /* * {
             margin: 0;
@@ -459,12 +459,12 @@
             color: #fff;
             cursor: pointer;
             transition: 0.3s ease;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            box-shadow: 0px 0px 4px #000;
+            /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 0px 4px #000; */
         }
 
         #page1 .txt button:hover {
-            box-shadow: 0px 0px 10px #000;
+            /* box-shadow: 0px 0px 10px #000; */
         }
 
         #page1 .txt .btns {
@@ -483,12 +483,16 @@
             transform: translateY(22px);
         }
 
+        /* Media Query for Page 1 */
         @media (max-width: 799px) {
+            #page1 {
+                background-position: top 45px right 0;
+            }
+
             #page1 .txt {
                 width: 55%;
                 /* Only takes up the left half of the screen, leaving the right open */
                 padding: 0 30px;
-                /* Reduces the huge 80px padding so text has more breathing room */
                 height: auto;
             }
 
@@ -501,6 +505,7 @@
             #page1 .txt p {
                 display: none;
             }
+
             #page1 .txt .btns {
                 display: flex;
                 flex-direction: row;
@@ -508,63 +513,68 @@
 
             #page1 .txt .btns .play-store-badge img {
                 transform: translateY(4px);
-                border-radius: 50px;    
+                border-radius: 50px;
             }
 
             #page1 .txt .btns .apple-store-badge img {
-height: 53.5px;
+                height: 53.5px;
                 transform: translateY(18px);
             }
 
         }
+
         @media (max-width: 550px) {
 
-         #page1 {
-        background: #fff;
-        width: 100%;
-        overflow-x: hidden; /* Hard cut-off to protect the main screen layout */
-    }
-    
-    #page1 .txt {
-        width: 100% !important;      /* Forces container to match viewport width */
-        max-width: 100% !important;  /* Hard ceiling rule */
-        padding: 0 20px !important;  /* Safe inner spacing from screen edges */
-        box-sizing: border-box;      /* Keeps the padding inside the 100% calculation */
-        text-align: left !important; /* Forces layout to remain left-aligned */
-        margin: 0 !important;        /* Clears any center auto-margins */
-    }
+            #page1 {
+                background-color: rgba(255, 255, 255, 0.6);
+                /* White layer with 60% opacity */
+                background-blend-mode: lighten;
+                background-position: top 50px right 30px;
+                width: 100%;
+                overflow-x: hidden;
+            }
 
-    #page1 .txt h1 {
-        font-size: 28px !important;  /* Shrinks huge font so it fits small displays */
-        line-height: 1.3;
-        text-align: left !important;
-        overflow-wrap: break-word;   /* Breaks long words naturally if needed */
-        width: 100%;
-    }
+            #page1 .txt {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 20px !important;
+                box-sizing: border-box;
+                text-align: left !important;
+                margin: 0 !important;
+            }
 
-    /* Fixes the button wrapper from pushing the right margin out */
-    #page1 .txt .btns {
-        display: flex;
-        flex-wrap: wrap;             /* CRITICAL: Wraps badges to next line if screen gets too narrow */
-        justify-content: flex-start; /* Aligns both badges to the left */
-        gap: 10px;                   /* Clean horizontal/vertical gap between badges */
-        width: 100%;
-        max-width: 100%;
-    }
+            #page1 .txt h1 {
+                font-size: 28px !important;
+                line-height: 1.3;
+                text-align: left !important;
+                overflow-wrap: break-word;
+                /* Breaks long words naturally if needed */
+                width: 100%;
+            }
 
-    /* Keeps the badges scaled down and shifts removed */
-    #page1 .txt .btns .play-store-badge img,
-    #page1 .txt .btns .apple-store-badge img {
-        max-width: 135px;            /* Ensures badges aren't wide enough to break the screen */
-        width: 100%;
-        /* height: auto !important;      */
-        /* transform: none !important;  */
-    }
-    #page1 .txt .btns .play-store-badge img {
-         height: 68px;
-        transform: translateY(10px)
-    }
-}
+            /* Fixes the button wrapper from pushing the right margin out */
+            #page1 .txt .btns {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 10px;
+                max-width: 100%;
+            }
+
+            /* Keeps the badges scaled down and shifts removed */
+            #page1 .txt .btns .play-store-badge img,
+            #page1 .txt .btns .apple-store-badge img {
+                max-width: 135px;
+                width: 100%;
+                /* height: auto !important;      */
+                /* transform: none !important;  */
+            }
+
+            #page1 .txt .btns .play-store-badge img {
+                height: 68px;
+                transform: translateY(10px)
+            }
+        }
 
         .scrl {
             display: flex;
@@ -585,7 +595,8 @@ height: 53.5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: spin 10s infinite linear;
+            animation: spin 17s infinite linear;
+            /* 10s to 17s */
         }
 
         .tt {
@@ -625,7 +636,6 @@ height: 53.5px;
             padding: 35px 0;
             /* Adds breathing room to the top and bottom of the section */
             background-color: var(--maincolor);
-            /* Keeps your blue section background seamless */
         }
 
         .page2 h1 {
@@ -644,13 +654,10 @@ height: 53.5px;
             padding: 40px;
             background-color: var(--rndmcolor);
             width: 80%;
-            /* Restricts width to exactly 80% as requested */
             max-width: 1200px;
-            /* Prevents the text from stretching too wide on massive screens */
             color: white;
-            /* Ensures high visibility against the blue background */
             border-radius: 10px;
-            box-shadow: 0 0 15px 6px #000;
+            /* box-shadow: 0 0 15px 6px #000; */
         }
 
         .about-us h1 {
@@ -661,11 +668,8 @@ height: 53.5px;
         /* Justify the descriptive paragraphs */
         .about-us p {
             text-align: justify;
-            /* Spreads text evenly from left to right margins */
             line-height: 1.6;
-            /* Adds line spacing for comfortable reading */
             margin-bottom: 20px;
-            /* Spaces out each paragraph nicely */
             font-size: 18px;
         }
 
@@ -757,7 +761,7 @@ height: 53.5px;
             background: #fff;
             border-radius: 6px;
             padding: 30px 60px 40px 40px;
-            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+            /* box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2); */
         }
 
         .container .content {
@@ -850,7 +854,7 @@ height: 53.5px;
 
         .right-side .button input[type="submit"] {
             border: none;
-            box-shadow: 0px 0px 5px #000;
+            /* box-shadow: 0px 0px 5px #000; */
             color: #fff;
             font-size: 18px;
             padding: 8px 16px;
